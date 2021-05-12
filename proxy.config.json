@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "http://o02b06.kmm.com.br/_remote/gateway.php",
+    "secure": false
+  }
+}

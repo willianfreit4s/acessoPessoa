@@ -1,0 +1,68 @@
+<form action="your-action" (submit)="onFormSubmit($event)">
+  <dx-form
+    id="form"
+    [formData]="pessoaCartao"
+    [readOnly]="false"
+    [showColonAfterLabel]="true"
+    [showValidationSummary]="true"
+    validationGroup="pessoaCartaoData"
+  >
+    <dxi-item itemType="group" caption="Cadastro Pessoa Cartão">
+      <dxi-item
+        dataField="validade"
+        
+        editorType="dxDateBox"
+        [editorOptions]="{
+          invalidDateMessage: 'A data deve ter o seguinte formato: MM/dd/yyyy',
+          type: 'datetime',
+          displayFormat: 'dd/MM/yyyy HH:mm:ss',
+          dateSerializationFormat: 'dd/MM/yyyy HH:mm:ss'
+        }"
+      >
+        <dxi-validation-rule
+          type="required"
+          message="Validade do cartão é obrigatório"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item
+        dataField="pessoa_id"
+        editorType="dxSelectBox"
+        [editorOptions]="{
+          items: pessoaData2,
+          displayExpr: 'nome',
+          valueExpr: 'pessoa_id'
+        }"
+      >
+        <dxo-label text="Pessoa"></dxo-label>
+        <dxi-validation-rule
+          type="required"
+          message="É necessário vincular pessoa"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item
+        dataField="cartao_id"
+        editorType="dxSelectBox"
+        [editorOptions]="{
+          items: cartaoData2,
+          displayExpr: 'codigo',
+          valueExpr: 'cartao_id'
+        }"
+      >
+        <dxo-label text="Cartão"> </dxo-label>
+        <dxi-validation-rule
+          type="required"
+          message="É necessário vincular um cartão"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+    </dxi-item>
+    <dxi-item
+      itemType="button"
+      horizontalAlignment="left"
+      [buttonOptions]="buttonOptions"
+    >
+    </dxi-item>
+  </dx-form>
+</form>

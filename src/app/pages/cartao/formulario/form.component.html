@@ -1,0 +1,51 @@
+<form action="your-action" (submit)="onFormSubmit($event)">
+  <dx-form
+    id="form"
+    [formData]="cartao"
+    [readOnly]="false"
+    [showColonAfterLabel]="true"
+    [showValidationSummary]="true"
+    validationGroup="cartaoData"
+  >
+    <dxi-item itemType="group" caption="Cadastro Cartão">
+      <!-- <dxi-item
+        dataField="cod_gestao"
+        [editorOptions]="{
+          mask: '00000',
+          maskRules: codGestaoRules,
+          useMaskedValue: true,
+          maskInvalidMessage: 'Código Gestão Inválido'
+        }"
+      >
+        <dxi-validation-rule
+          type="required"
+          [pattern]="codGestaoPattern"
+          message="Código Gestão é obrigatório"
+        >
+        </dxi-validation-rule>
+      </dxi-item> -->
+      <dxi-item
+        dataField="codigo"
+        [editorOptions]="{
+          mask: '0000000',
+          maskRules: codigoRules,
+          useMaskedValue: true,
+          maskInvalidMessage: 'Código Inválido'
+        }"
+      >
+        <dxi-validation-rule
+          type="required"
+          [pattern]="codigoPattern"
+          message="Código é obrigatório"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+    </dxi-item>
+    <dxi-item
+      itemType="button"
+      horizontalAlignment="left"
+      [buttonOptions]="buttonOptions"
+    >
+    </dxi-item>
+  </dx-form>
+</form>

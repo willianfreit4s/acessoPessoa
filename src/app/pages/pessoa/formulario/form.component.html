@@ -1,0 +1,68 @@
+<form action="your-action" (submit)="onFormSubmit($event)">
+  <dx-form
+    id="form"
+    [formData]="pessoa"
+    [readOnly]="false"
+    [showColonAfterLabel]="true"
+    [showValidationSummary]="true"
+    validationGroup="pessoaData"
+  >
+    <dxi-item itemType="group" caption="Cadastro Pessoa">
+      <dxi-item
+        dataField="nome"
+        ngModel
+        [editorOptions]="{
+          maskRules: nomeRules,
+          useMaskedValue: true
+        }"
+      >
+        <dxi-validation-rule
+          type="required"
+          [pattern]="nomePattern"
+          message="Nome é obrigatório"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item
+        dataField="cpf"
+        ngModel
+        [editorOptions]="{
+          mask: '000.000.000-00',
+          maskRules: cpfRules,
+          useMaskedValue: true,
+          maskInvalidMessage: 'CPF inválido'
+        }"
+      >
+        <dxo-label text="CPF"> </dxo-label>
+        <dxi-validation-rule
+          type="required"
+          [pattern]="cpfPattern"
+          message="CPF é obrigatório"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="async"
+          message="Informe um CPF Válido"
+          [validationCallback]="asyncValidation"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+    </dxi-item>
+    <dxi-item
+      itemType="button"
+      horizontalAlignment="left"
+      [buttonOptions]="buttonOptions"
+    >
+    </dxi-item>
+  </dx-form>
+</form>
+<!-- 
+<form (ngSubmit)="logForm($event)">
+  <label>nome:</label>
+  <input type="text" name="nome" ngModel>
+
+  <label>CPF:</label>
+  <input type="text" name="cpf" ngModel>
+
+  <button type="submit">Submit</button>
+</form> -->
