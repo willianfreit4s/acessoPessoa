@@ -10,7 +10,6 @@ import {
   DxTemplateModule,
 } from 'devextreme-angular';
 //import DataSource from 'devextreme/data/data_source';
-import { Service } from '../../../../../app2.service';
 
 import { Pessoa } from '../../../models/pessoa/pessoa.model';
 import { PessoaService } from 'src/app/services/pessoa.service';
@@ -23,7 +22,6 @@ import { PessoaService } from 'src/app/services/pessoa.service';
   selector: 'demo-app',
   templateUrl: 'lista.component.html',
   styleUrls: ['./lista.component.scss'],
-  providers: [Service],
 })
 export class ListComponent {
   //dataSource: DataSource;
